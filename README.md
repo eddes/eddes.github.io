@@ -44,7 +44,7 @@ print("Radiation at 0.55 micrometers", fc_interp(0.55), 'W/m²/um')
 That's about it, the rest is plotting!
 You can [get the data](https://github.com/eddes/eddes.github.io/blob/main/ASTMed.xls) in .xls file format and the [code here](https://github.com/eddes/eddes.github.io/blob/main/interpolate_ASTM.py)
 
-![Interpolated and measured data](/interp.png)
+![Interpolated and measured data](/img/interp.png)
 
 # Resampling data
 
@@ -63,7 +63,7 @@ wavelengths=np.arange(min(x),max(x), 0.5)
 # get the resampled radiation data
 resampled_radiation = fc_interp(wavelengths)
 ```
-![Resampling data](/resamp.png)
+![Resampling data](/img/resamp.png)
 (looks weird, I know... usually you resample the other way around, with more data!)
 	
 # Numerical integration
@@ -96,7 +96,7 @@ E_sun= integrate.quad(lambda x: black_body_radiation(x,Tsun), 0.5*lambda_m, 5*la
 print("radiation of the black body", E_sun, [W])
 ```
 
-![Integrated black body spectrum](/M0k.png)
+![Integrated black body spectrum](/img/M0k.png)
 
 # Combine: Integrate your measured data
 
