@@ -123,22 +123,23 @@ You will find two examples below to kick-start your code.
 ## Computing the wet bulb temperature (one unknown)
 
 The equation of the wet-bulb temperature is defined in function of itself
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_d + \frac{1}{2}" title="T_{wb}= T_d + \frac{1}{2}" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" title="T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" />
 
  T<sub>wb</sub> = T<sub>a</sub> +(p<sub>v</sub>- p<sub>vs</sub>(T<sub>wb</sub>)) )/(C<sub>p</sub>(p - p<sub>vs</sub>(T<sub>wb</sub>)) x 0.622 x (L<sub>v</sub>-2.65 T<sub>a</sub>)
 
+A simplest way to solve this (complicated) equation it is to create a function in the form `Twb-f(Twb)=0` and to ask the specialised procedure `fsolve` to do it for us:
 
 ```python
 import numpy as np # for generic math/array operations
 from scipy.optimize import fsolve # queen of solving procedures
 
-# a function for the vapour pressure at saturation
+# a function for the vapour pressure at saturation pvs(T)
 def pvs(T):
 	a,b=0.07252,0.0002881
 	c,d=0.00000079,611
 	return d * np.exp(a*T -b*np.power(T,2) + c*np.power(T,3))
 
-# the function that will allow finding Twb
+# the function that will allow finding Twb depending on temperature T and vapour pressure pv
 def fc_Twb(Twb, T, pv):
 	Cp, p, Lv = 1006, 101325, 2400*1e3
 	return - Twb +T+ (pv-pvs(Twb))/(Cp*(p-pvs(Twb)))*0.622*(Lv-2.65*T)
