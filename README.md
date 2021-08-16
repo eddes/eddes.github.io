@@ -62,7 +62,7 @@ E_sun= integrate.quad(lambda x: black_body_radiation(x,Tsun), 0.1*lambda_m, 10*l
 print("radiation of the black body", E_sun, [W])
 ```
 
-![Interpolated and measured data](/Mk0.png)
+![Integrated black body spectrum](/Mk0.png)
 
 # Combine: Integrate your interpolated data
 
