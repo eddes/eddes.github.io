@@ -101,7 +101,7 @@ print("radiation of the black body", E_sun, [W])
 
 # Combine: Integrate your measured data
 
-It is sometimes handy to integrate measured data (e.g. power over time -> energy).
+It is sometimes handy to integrate measured data (e.g. power over time &rarr; energy).
 	
 Imagine that for some reason, you want to compute the energy comprised in the ASTM solar data of the first example.
 You can either do it directly in the .xls file provided, using the [rectangle integration method](https://en.wikipedia.org/wiki/Numerical_integration#Quadrature_rules_based_on_interpolating_functions), or follow the tutorial presented here.
@@ -125,7 +125,7 @@ You will find two examples below to kick-start your code.
 The equation of the wet-bulb temperature is defined in function of itself
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_d + \frac{1}{2}" title="T_{wb}= T_d + \frac{1}{2}" />
 
- T<sub>wb</sub> = T<sub>a</sub> +(p<sub>v</sub>- p<sub>vs</sub>(T<sub>wb</sub>)) )/(C<sub>p</sub>(p - p<sub>vs</sub>(T<sub>wb</sub>))0.622 (L<sub>v</sub>-2.65 T<sub>a</sub>)
+ T<sub>wb</sub> = T<sub>a</sub> +(p<sub>v</sub>- p<sub>vs</sub>(T<sub>wb</sub>)) )/(C<sub>p</sub>(p - p<sub>vs</sub>(T<sub>wb</sub>)) x 0.622 x (L<sub>v</sub>-2.65 T<sub>a</sub>)
 
 
 ```python
@@ -144,15 +144,15 @@ def fc_Twb(Twb, T, pv):
 	return - Twb +T+ (pv-pvs(Twb))/(Cp*(p-pvs(Twb)))*0.622*(Lv-2.65*T)
 
 # let's define the temperature and vapour pressure conditions
-T = 40 # dry bulb temperature
-pv=0.3*pvs(T) # let us go for 30% relative humidity
+Ta = 40 # air dry bulb temperature
+pv=0.3*pvs(Ta) # let us go for 30% relative humidity
 
 # initial guess for the solution
-Twb_guess = T-10 # usually Twet-bulb is on the left of Tdry
+Twb_guess = Ta-10 # usually Twet-bulb is on the left of Tdry
 
 # solving with fsolve (note the first argument is the unknown and the others are given separately)
 # compute the wet-bulb temperature:
-Twb = fsolve(fc_Twb, Twb_guess, args=(T, pv))
+Twb = fsolve(fc_Twb, Twb_guess, args=(Ta, pv))
 print("wet bulb temperature", Twb)
 
 ```
