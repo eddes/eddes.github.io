@@ -63,7 +63,9 @@ wavelengths=np.arange(min(x),max(x), 0.5)
 # get the resampled radiation data
 resampled_radiation = fc_interp(wavelengths)
 ```
-
+![Resampling data](/resamp.png)
+(looks weird, I know... usually you resample the other way around, with more data!)
+	
 # Numerical integration
 
 Life is beautiful since numerical integration was invented (even more since integration was made possible with less than 10 lines of code).
