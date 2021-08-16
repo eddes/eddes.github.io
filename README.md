@@ -1,13 +1,17 @@
-# eddes.github.io
+### eddes.github.io
 
-A few tools and methods gathered along the way that might prove to be useful for people dealing with measured data, equations or teaching.
-On the agenda: 
+On this page, a few tools and methods gathered along the way.
+Might prove to be useful for people dealing with measured data, equations or teaching.
+
+
+On the agenda:
 
 - [x]  data interpolation
 - [x]  data resampling
 - [x]  function integration
 - [ ]  integration of interpolated data (yes.)
 - [ ]  equation solving
+- [ ]  tips & tricks with <pyvista> (depending on the mood!)
 
 
 # Data interpolation
@@ -44,8 +48,7 @@ You can [get the data](https://github.com/eddes/eddes.github.io/blob/main/ASTMed
 
 # Resampling data
 
-It is often useful to resample data in the field of building physics. For instance if you have measured data at 1 hour interval and require a 10 minutes
-Using the same procedure as above
+It is often useful to resample data in the field of building physics. For instance if you have measured data at 1 hour interval and require a 10 minutes interval. No need to worry about creating your own interpolation routine: Using exactly the same procedure as above, you can proceed as follows.
 
 ```python
 import numpy as np # numpy import for convenience
@@ -55,18 +58,22 @@ x, y = df['lambda'].values, df['global'].values
 # create the interpolation function
 fc_interp = scipy.interpolate.interp1d(x, y)
 
-#let us define a new interval every 0.5 micrometer
+#let us define a new interval every 0.5 micrometer between the bounds
 wavelengths=np.arange(min(x),max(x), 0.5)
 # get the resampled radiation data
 resampled_radiation = fc_interp(wavelengths)
 ```
 
-
 # Numerical integration
 
-Similarly to the previous example, let us now compute the black body radiation emitted by the sun over its spectrum.
+Life is beautiful since numerical integration was invented (even more since integration was made possible with less than 10 lines of code).
+Using the same physical problem as the previous example, let us now compute the black body radiation emitted by the sun over its spectrum.
+
+We will therefore use [Planck's law](https://en.wikipedia.org/wiki/Planck%27s_law) for the black body emission, which forms more than half the code required, as you can see for yourself below.
 
 ```python
+import scipy.integrate as integrate # import the integration method
+
 # Planck's emission law depending on wavelength x [micrometers] and temperature T [K]
 def black_body_radiation(x,T):
 	#a few constants
@@ -89,10 +96,22 @@ print("radiation of the black body", E_sun, [W])
 
 ![Integrated black body spectrum](/M0k.png)
 
-# Combine: Integrate your interpolated data
+# Combine: Integrate your measured data
 
-[under construction]
+It is sometimes handy to integrate measured data (e.g. power over time -> energy).
+	
+Imagine that for some reason, you want to compute the energy comprised in the ASTM solar data of the first example.
+You can either do it directly in the .xls file provided, using the [rectangle integration method](https://en.wikipedia.org/wiki/Numerical_integration#Quadrature_rules_based_on_interpolating_functions), or follow the tutorial presented here.
+	
+You may have noticed that numerical integration requires a function to be integrated (e.g. <black_body_radiation()> in the script above).
+Very handily, the interpolation function proposed in the previous section provides <fc_interp()> which allows to determine the value of the function for any abscissa (within the measured abscissa).
 
+```python
+import scipy.integrate as integrate #
+E_sun= integrate.quad(lambda x: fc_interp(x), min(x), max(x))[0]
+print("and the solar energy spectrum contains...", E_sun, " Watts!")
+```
+	
 # Solve equations
 
 [under construction]
