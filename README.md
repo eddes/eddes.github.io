@@ -65,7 +65,7 @@ resampled_radiation = fc_interp(wavelengths)
 ```
 ![Resampling data](/img/resamp.png)
 	
-(looks weird, I know... usually you resample the other way around, with more data!)
+_(looks weird, I know... usually you resample the other way around: with more data!)_
 	
 ## Numerical integration
 
