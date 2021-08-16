@@ -4,7 +4,7 @@ A few tools and methods gathered along the way that might prove to be useful for
 On the agenda: 
 
 - [x] data interpolation
-- [ ] function integration
+- [x] function integration
 - [ ] integration of interpolated data (yes.)
 - [ ]  equation solving
 
