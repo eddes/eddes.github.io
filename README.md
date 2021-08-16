@@ -3,9 +3,9 @@
 A few tools and methods gathered along the way that might prove to be useful for others.
 On the agenda: 
 
-- [x] data interpolation
-- [x] function integration
-- [ ] integration of interpolated data (yes.)
+- [x]  data interpolation
+- [x]  function integration
+- [ ]  integration of interpolated data (yes.)
 - [ ]  equation solving
 
 
@@ -64,7 +64,7 @@ E_sun= integrate.quad(lambda x: black_body_radiation(x,Tsun), 0.1*lambda_m, 10*l
 print("radiation of the black body", E_sun, [W])
 ```
 
-![Integrated black body spectrum](/Mk0.png)
+![Integrated black body spectrum](/M0k.png)
 
 # Combine: Integrate your interpolated data
 
