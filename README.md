@@ -10,15 +10,15 @@ On the agenda:
 - [x]  data resampling
 - [x]  function integration
 - [x]  integration of interpolated data (yes.)
-- [ ]  equation solving
-- [ ]  tips & tricks with <pyvista> (depending on the mood!)
+- [x]  equation solving
+- [ ]  tips & tricks with `pyvista` (depending on the mood!)
 
 
 # Data interpolation
 
 In this section, we will use the solar spectrum data provided by the NREL called [ASTM AM 1.5](https://www.nrel.gov/grid/solar-resource/spectra-am1.5.html) and corresponding to ground level solar radiation, including the absorption of radiation by gases in the atmosphere.
 
-The aim is to create an interpolation function in order to obtain the values at different abscissa <scipy.integrate>.
+The aim is to create an interpolation function in order to obtain the values at different abscissa `scipy.integrate`.
 The main features of the code are here, pretty much straightforward with the comments:
 
 ```python
@@ -106,8 +106,8 @@ It is sometimes handy to integrate measured data (e.g. power over time -> energy
 Imagine that for some reason, you want to compute the energy comprised in the ASTM solar data of the first example.
 You can either do it directly in the .xls file provided, using the [rectangle integration method](https://en.wikipedia.org/wiki/Numerical_integration#Quadrature_rules_based_on_interpolating_functions), or follow the tutorial presented here.
 	
-You may have noticed that numerical integration requires a function to be integrated (e.g. <black_body_radiation()> in the script above).
-Very handily, the interpolation function proposed in the previous section provides <fc_interp()> which allows to determine the value of the function for any abscissa (within the measured abscissa).
+You may have noticed that numerical integration requires a function to be integrated (e.g. `black_body_radiation()` in the script above).
+Very handily, the interpolation function proposed in the previous section provides `fc_interp()` which allows to determine the value of the function for any abscissa (within the measured abscissa).
 
 ```python
 import scipy.integrate as integrate #
