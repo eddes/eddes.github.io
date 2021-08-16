@@ -123,7 +123,8 @@ You will find two examples below to kick-start your code.
 ## Computing the wet bulb temperature (one unknown)
 
 The equation of the wet-bulb temperature is defined in function of itself
-$T_{wb}= T_d + \frac{1}{2}$
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_d + \frac{1}{2}" title="T_{wb}= T_d + \frac{1}{2}" />
+
 
 ```python
 import numpy as np # for generic math/array operations
