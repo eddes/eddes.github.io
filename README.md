@@ -123,7 +123,7 @@ You will find two examples below to kick-start your code.
 ### Computing the wet bulb temperature (one unknown)
 
 The equation of the wet-bulb temperature is defined in function of itself
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" title="T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" title="T_{wb}= T_a + \frac{p_v-p_{vs}(T_{wb})}{C_p(p - p_{vs}(T_{wb}))} \times 0.622 \times (L_v - 2.65 T)" />
 
 A simple way to solve this (complicated) equation it is to create a function in the form `Twb-f(Twb)=0` and to ask the specialised procedure `fsolve` to do it for us:
 
