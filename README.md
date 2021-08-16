@@ -6,11 +6,11 @@ Might prove to be useful for people dealing with measured data, equations or tea
 
 On the agenda:
 
-- [x]  data interpolation
-- [x]  data resampling
-- [x]  function integration
-- [x]  integration of interpolated data (yes.)
-- [x]  equation solving
+- [x]  [data interpolation](https://eddes.github.io/#data-interpolation)
+- [x]  [data resampling](https://eddes.github.io/#data-resampling)
+- [x]  [function integration](https://eddes.github.io/#function-integration)
+- [x]  [integration of interpolated data (yes.)](https://eddes.github.io/#integration-of-interpolated-data)
+- [x]  [equation solving](https://eddes.github.io/#equation-solving)
 - [ ]  tips & tricks with `pyvista` (depending on the mood!)
 
 
