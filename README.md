@@ -11,8 +11,10 @@ On the agenda:
 
 # Data interpolation
 
-In this section, we will use the solar spectrum data provided by the NREL called [ASTM AM 1.5](https://www.nrel.gov/grid/solar-resource/spectra-am1.5.html) an corresponding to ground level solar radiation, including absorption of radiation by gases in the atmosphere.
-The main features of the code are here:
+In this section, we will use the solar spectrum data provided by the NREL called [ASTM AM 1.5](https://www.nrel.gov/grid/solar-resource/spectra-am1.5.html) and corresponding to ground level solar radiation, including the absorption of radiation by gases in the atmosphere.
+
+The aim is to create an interpolation function in order to obtain the values at different abscissa <scipy.integrate>.
+The main features of the code are here, pretty much straightforward with the comments:
 
 ```python
 import pandas as pd #for reading the xls file
