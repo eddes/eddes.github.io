@@ -1,6 +1,6 @@
 # eddes.github.io
 
-A few tools and methods gathered along the way that might prove to be useful for others.
+A few tools and methods gathered along the way that might prove to be useful for people dealing with measured data, equations or teaching.
 On the agenda: 
 
 - [x]  data interpolation
