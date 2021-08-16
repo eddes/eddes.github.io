@@ -122,6 +122,9 @@ You will find two examples below to kick-start your code.
 	
 ## Computing the wet bulb temperature (one unknown)
 
+The equation of the wet-bulb temperature is defined in function of itself
+$T_{wb}= T_d + \frac{1}{2}$
+
 ```python
 import numpy as np # for generic math/array operations
 from scipy.optimize import fsolve # queen of solving procedures
@@ -137,6 +140,7 @@ def fc_Twb(Twb, T, pv):
 	Cp, p, Lv = 1006, 101325, 2400*1e3
 	return - Twb +T+ (pv-pvs(Twb))/(Cp*(p-pvs(Twb)))*0.622*(Lv-2.65*T)
 
+# let's define the temperature and vapour pressure conditions
 T = 40 # dry bulb temperature
 pv=0.3*pvs(T) # let us go for 30% relative humidity
 
@@ -144,8 +148,8 @@ pv=0.3*pvs(T) # let us go for 30% relative humidity
 Twb_guess = T-10 # usually Twet-bulb is on the left of Tdry
 
 # solving with fsolve (note the first argument is the unknown and the others are given separately)
+# compute the wet-bulb temperature:
 Twb = fsolve(fc_Twb, Twb_guess, args=(T, pv))
-
 print("wet bulb temperature", Twb)
 
 ```
