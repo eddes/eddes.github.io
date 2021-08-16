@@ -125,6 +125,8 @@ You will find two examples below to kick-start your code.
 The equation of the wet-bulb temperature is defined in function of itself
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_d + \frac{1}{2}" title="T_{wb}= T_d + \frac{1}{2}" />
 
+ T<sub>wb</sub> = T<sub>a</sub> +(p<sub>v</sub>- p<sub>vs</sub>(T<sub>wb</sub>)) )/(C<sub>p</sub>(p - p<sub>vs</sub>(T<sub>wb</sub>))0.622 (L<sub>v</sub>-2.65 T<sub>a</sub>)
+
 
 ```python
 import numpy as np # for generic math/array operations
