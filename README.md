@@ -14,7 +14,7 @@ On the agenda:
 - [ ]  tips & tricks with `pyvista` (depending on the mood!)
 
 
-# Data interpolation
+## Data interpolation
 
 In this section, we will use the solar spectrum data provided by the NREL called [ASTM AM 1.5](https://www.nrel.gov/grid/solar-resource/spectra-am1.5.html) and corresponding to ground level solar radiation, including the absorption of radiation by gases in the atmosphere.
 
@@ -46,7 +46,7 @@ You can [get the data](https://github.com/eddes/eddes.github.io/blob/main/ASTMed
 
 ![Interpolated and measured data](/img/interp.png)
 
-# Resampling data
+## Resampling data
 
 It is often useful to resample data in the field of building physics. For instance if you have measured data at 1 hour interval and require a 10 minutes interval. No need to worry about creating your own interpolation routine: Using exactly the same procedure as above, you can proceed as follows.
 
@@ -67,7 +67,7 @@ resampled_radiation = fc_interp(wavelengths)
 	
 (looks weird, I know... usually you resample the other way around, with more data!)
 	
-# Numerical integration
+## Numerical integration
 
 Life is beautiful since numerical integration was invented (even more since integration was made possible with less than 10 lines of code).
 Using the same physical problem as the previous example, let us now compute the black body radiation emitted by the sun over its spectrum.
@@ -99,7 +99,7 @@ print("radiation of the black body", E_sun, [W])
 
 ![Integrated black body spectrum](/img/M0k.png)
 
-# Combine: Integrate your measured data
+## Combine: Integrate your measured data
 
 It is sometimes handy to integrate measured data (e.g. power over time &rarr; energy).
 	
@@ -115,19 +115,17 @@ E_sun= integrate.quad(lambda x: fc_interp(x), min(x), max(x))[0]
 print("and the solar energy spectrum contains...", E_sun, " Watts!")
 ```
 	
-# Solving equations
+## Solving equations
 
 Problems are much simpler when computers solve equations or systems of equations for us.
 You will find two examples below to kick-start your code.
 	
-## Computing the wet bulb temperature (one unknown)
+### Computing the wet bulb temperature (one unknown)
 
 The equation of the wet-bulb temperature is defined in function of itself
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" title="T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" />
 
- T<sub>wb</sub> = T<sub>a</sub> +(p<sub>v</sub>- p<sub>vs</sub>(T<sub>wb</sub>)) )/(C<sub>p</sub>(p - p<sub>vs</sub>(T<sub>wb</sub>)) x 0.622 x (L<sub>v</sub>-2.65 T<sub>a</sub>)
-
-A simplest way to solve this (complicated) equation it is to create a function in the form `Twb-f(Twb)=0` and to ask the specialised procedure `fsolve` to do it for us:
+A simple way to solve this (complicated) equation it is to create a function in the form `Twb-f(Twb)=0` and to ask the specialised procedure `fsolve` to do it for us:
 
 ```python
 import numpy as np # for generic math/array operations
@@ -157,7 +155,7 @@ Twb = fsolve(fc_Twb, Twb_guess, args=(Ta, pv))
 print("wet bulb temperature", Twb)
 
 ```
-## An example with _n_ unknowns
+### A cool example with _n_ unknowns
 	
 [under construction]
 
