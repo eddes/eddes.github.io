@@ -120,23 +120,36 @@ print("and the solar energy spectrum contains...", E_sun, " Watts!")
 Life is easier when computers solve systems of equations for us.
 You will find two examples below to kick-start your code.
 	
-## One unknown - Compute the wet bulb temperature
+## Computing the wet bulb temperature (one unknown)
 
 ```python
 import numpy as np
-from scipy.optimize import fsolve # 
+from scipy.optimize import fsolve # fc résolution équation.
 
-# put the function as 
-def fc_T_pvs(T, pvs):
-	a=0.07252
-	b=0.0002881
-	c=0.00000079
-	d=611
-	return pvs - d * np.exp(a*T -b*np.power(T,2) + c*np.power(T,3))
+# a function for the vapour pressure at saturation
+def pvs(T):
+	a,b =0.07252,0.0002881
+	c,d=0.00000079,611
+	return d * np.exp(a*T -b*np.power(T,2) + c*np.power(T,3))
 
-pvs=800 # known pvs 
-temperature0 = 20 # initial guess of the solution
-temperature = fsolve(fc_T_pvs , temperature0, args=(pvs))
+# the function that will allow finding Twb
+def fc_Twb(Twb, T, pv):
+	Cp, p, Lv = 1006, 101325, 2400*1e3
+	return - Twb +T+ (pv-pvs(Twb))/(Cp*(p-pvs(Twb)))*0.622*(Lv-2.65*T)
+
+T = 40 # dry bulb temperature
+pv=0.3*pvs(T) # 30% relative humidity
+
+# initial guess for the solution
+Twb_guess = T-10 
+
+# initial guess for the solution
+Twb = fsolve(fc_Twb, Twb_guess, args=(T, pv))
+
+print("wet bulb temperature", Twb)
+
 ```
-## n unknown
+## An example with _n_ unknowns
+	
+[under construction]
 
