@@ -9,7 +9,7 @@ On the agenda:
 - [x]  data interpolation
 - [x]  data resampling
 - [x]  function integration
-- [ ]  integration of interpolated data (yes.)
+- [x]  integration of interpolated data (yes.)
 - [ ]  equation solving
 - [ ]  tips & tricks with <pyvista> (depending on the mood!)
 
@@ -64,6 +64,7 @@ wavelengths=np.arange(min(x),max(x), 0.5)
 resampled_radiation = fc_interp(wavelengths)
 ```
 ![Resampling data](/img/resamp.png)
+	
 (looks weird, I know... usually you resample the other way around, with more data!)
 	
 # Numerical integration
@@ -114,12 +115,28 @@ E_sun= integrate.quad(lambda x: fc_interp(x), min(x), max(x))[0]
 print("and the solar energy spectrum contains...", E_sun, " Watts!")
 ```
 	
-# Solve equations
+# Solving equations
 
-[under construction]
+Life is easier when computers solve systems of equations for us.
+You will find two examples below to kick-start your code.
+	
+## One unknown - Compute the wet bulb temperature
 
+```python
+import numpy as np
+from scipy.optimize import fsolve # 
 
-## One unknown
+# put the function as 
+def fc_T_pvs(T, pvs):
+	a=0.07252
+	b=0.0002881
+	c=0.00000079
+	d=611
+	return pvs - d * np.exp(a*T -b*np.power(T,2) + c*np.power(T,3))
 
+pvs=800 # known pvs 
+temperature0 = 20 # initial guess of the solution
+temperature = fsolve(fc_T_pvs , temperature0, args=(pvs))
+```
 ## n unknown
 
