@@ -153,8 +153,9 @@ Twb_guess = Ta-10 # usually Twet-bulb is on the left of Tdry
 # compute the wet-bulb temperature:
 Twb = fsolve(fc_Twb, Twb_guess, args=(Ta, pv))
 print("wet bulb temperature", Twb)
-
 ```
+You can now replace the function `fc_Twb` by the one of your choice and ask `scipy` to `fsolve` it for you!
+
 ### A cool example with _n_ unknowns
 	
 [under construction]
