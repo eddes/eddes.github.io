@@ -45,7 +45,7 @@ You can [get the data](https://github.com/eddes/eddes.github.io/blob/main/ASTMed
 Similarly to the previous example, let us now compute the black body radiation emitted by the sun over its spectrum.
 
 ```python
-# the 
+# Planck's emission law depending on wavelength x [micrometers] and temperature T [K]
 def black_body_radiation(x,T):
 	#a few constants
 	h=6.62*10**(-34)
