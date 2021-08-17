@@ -1,1 +1,8 @@
 theme: jekyll-theme-slate
+
+author: E. Walther
+  type      : organization # "person" (default), "organization"
+  name      : Test
+  url       :
+  avatar    : /img/metamodel.png
+  bio: >
