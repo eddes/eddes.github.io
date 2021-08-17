@@ -171,6 +171,48 @@ Dedicated mathematical methods establishing the ranking of parameters do exist (
 The package [`pythermalcomfort`](pythermalcomfort.readthedocs.io/) will serve as an example here: we will use it in order to determine which abient parameters (air velocity, radiant temperature, air temperature, relative humidity) are the most influential on the _Standard Effective Temperature_ (SET) comfort index.
 
 
+```python
+import numpy as np
+from pythermalcomfort.models import set_tmp
+from SALib.plotting.morris import horizontal_bar_plot, covariance_plot
+from SALib.analyze import morris
+from SALib.sample.morris import sample
+
+# Define the model inputs
+problem = {
+    'num_vars': 4, # nb variables
+    'names': [r'$T_a$', r'$T_r$', 'v', 'RH'], # variables names
+    'bounds': [[10,40], # les limites de chacune (borne min/max)
+               [10,40],
+               [0.1,1],
+               [10,90]]
+}
+# generate samples
+N_evaluations=50 # combien d'evaluations
+# prepare evaluations
+param_values= sample(problem, N_evaluations, num_levels=4) # num_levels/(2*(num_levels-1))
+Nmax=max(np.shape(param_values)) # values as output
+
+# the call looks like
+# set_tmp(tdb=Tair, tr=Trad, v=v, rh=hum, met=1.2, clo=.5)
+# so let's create the arrays for metabolic rate and clothing:
+array_met=np.ones(len(param_values))*1.2
+array_clo=np.ones(len(param_values))*0.5
+# ... and stack them to the param_values matrix
+param_values_with_metclo=np.hstack([param_values, array_met[:,None],array_clo[:,None]])
+
+# prepare the output array
+Y=np.ones((Nmax)) 
+# do the function evaluation
+for i,p in enumerate(param_values_with_metclo):
+	Y[i]= set_tmp(*p)
+
+# Perform analysis (une fois qu'on a tous les resultats dans le vecteur Y)
+Si = morris.analyze(problem, param_values, Y, conf_level=0.95,print_to_console=True, num_levels=4)
+```
+
+![results of the sensivitity analysis](/img/AS.png)
+
 ## Metamodeling: Kriging
 
 Some models are costly in terms of simulation time. When numerous runs of the model with differents sets of parameters are required, the creation of a _metamodel_ is often an interesting means of reducing the computational cost.
