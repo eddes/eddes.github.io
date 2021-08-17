@@ -3,6 +3,6 @@ theme: jekyll-theme-minimal
 author: E. Walther
   type      : person
   name      : Test
-  url       :
+  url       : www.bp.py.com
   avatar    : /img/metamodel.png
   bio: >
