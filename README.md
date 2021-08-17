@@ -124,7 +124,7 @@ You will find two examples below to kick-start your code.
 ### Computing the wet bulb temperature (one unknown)
 
 The equation of the wet-bulb temperature is defined in function of itself
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" title="T_{wb}= T_a + \frac{p_v-p_{vs}(T_{wb})}{C_p(p - p_{vs}(T_{wb}))} \times 0.622 \times (L_v - 2.65 T)" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" title="T_{wb}= T_a + \frac{p_v-p_{vs}(T_{wb})}{C_p(p - p_{vs}(T_{wb}) )} \times 0.622 \times (L_v - 2.65 T)" />
 
 A simple way to solve this (complicated) equation it is to create a function of `Twb` that `return Twb-f(Twb)=0` and to ask the specialised procedure `fsolve` to do it for us:
 
@@ -157,19 +157,19 @@ print("wet bulb temperature", Twb)
 ```
 You can now replace the function `fc_Twb` by the one of your choice and ask `scipy` to `fsolve` it for you!
 
-[under construction]
-
 ### A cool example with _n_ unknowns
-	
+
+[under construction, possibly the radiosity method]
+
 ## Sensitivity Analysis: Morris's method
 
-Some models are complex and require an important number of parameters. It is often useful to know which of the parameters are the most influential on the observed output of the model (e.g. for building simulation: is it the wall insulation level or the properties of windows that affect most the energy consumption?).
+Some models are complex and require an important number of parameters. It is often useful to know which of the parameters are the most influential on the observed output of the model (e.g. for building simulation: is it the wall insulation level or the properties of windows that affect most the energy consumption?). In the case of optimisation, knowing the influential parameters allows for instance to concentrate the computational effort on the meaningful inputs with regard to the considered output.
 
-Dedicated mathematical methods for such a ranking of parameters do exist. Most of them are based on the observation of the output of a limited number of well-chosen simulations of the model. We will use the [`SAlib`](https://salib.readthedocs.io/) sensitivity analysis package and especially [Morris' method](https://en.wikipedia.org/wiki/Morris_method), which is easy to understand (the average effect of each parameter variation and the standard deviaton between two simulations are observed).
+Dedicated mathematical methods establishing the ranking of parameters do exist (phew!). Most of them are based on the observation of the output of a limited number of well-chosen simulations of the model. We will use the [`SAlib`](https://salib.readthedocs.io/) sensitivity analysis package and especially [Morris' method](https://en.wikipedia.org/wiki/Morris_method), which is easy to understand (the average effect of each parameter variation and the standard deviaton between two simulations are observed).
 
 The package [`pythermalcomfort`](pythermalcomfort.readthedocs.io/) will serve as an example here.
 
 
 ## Metamodeling: Kriging
 
-Some models are costly in terms of simulation time.
+Some models are costly in terms of simulation time. 
