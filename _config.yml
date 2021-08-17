@@ -1,32 +1,5 @@
 theme: jekyll-theme-minimal
 title: Useful Tools in Python
-logo: /img/metamodel.png
 description: A selection of tools in python for modelling, building physics etc.
-
+logo: /img/metamodel.png
 show_downloads: False
-# SEO PLUGIN
-social:
-  name: Edouard Walther
-  links:
-    - https://www.linkedin.com/in/edouard-walther-8b0867a6/
-    - https://github.com/eddes
-
-tagline: >
-  Artificial Intelligence - Robotics - Optimization - Computer Vision
-
-
-email: a.b@gmail.com # email for form submission
-
-github_username:  eddes # replace with your_github_username or comment to remove link from footer
-linkedin_username: Edouard.Walther
-
-
-include: ['_pages']
-permalink: /:title/
-
-compress_html:
-  clippings: all
-
-plugins:
-  - jekyll-sitemap
-  - jekyll-seo-tag
