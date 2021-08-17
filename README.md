@@ -250,6 +250,7 @@ sm.set_training_values(xt, yt)
 sm.train()  # --> this is the costly part
 ```
 
-This [code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermalcomfort.py) allows to produce following output, with a reasonable 0.15 [K] of average error on the prediction.
+Once the metamodel is trained, it can be used for prediction with the simple instruction  `sm.predict_values(Tair, Tradiant)`.
+The [full code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermalcomfort.py) allows to produce following output, with a reasonable 0.15 [K] of average error on the prediction of the SET _versus_ the original one.
 
 ![Metamodel](/img/metamodel.png)
