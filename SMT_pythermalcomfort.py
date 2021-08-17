@@ -7,12 +7,11 @@ from smt.surrogate_models import KRG
 
 # boundaries of the air and radiant temperatures
 Tmin,Tmax=10,40 # air temperature
-dTr=20 # radiant temperature as an increase of the air temp
-xlimits = np.array([[Tmin, Tmax], [Tmin+dTr, Tmax+dTr]])
+Trmin,Trmax=20,40 # air temperature
+xlimits = np.array([[Tmin, Tmax], [Trmin, Trmax]])
 
 #metamodel set up
-nb_LHS = 200 # number of evaluations
-type_metam="KRG"
+nb_LHS = 100 # number of evaluations
 # type of sampling 
 sampling = LHS(xlimits=xlimits, criterion='c')
 # sample data set
@@ -34,7 +33,7 @@ sm.train()  # --> this is the costly part
 num=10 # nb points for the comparison
 meta_SET,SET=np.zeros((num,num)),np.zeros((num,num))
 tdb=np.linspace(Tmin,Tmax,num)
-tr=np.linspace(Tmin+dTr,Tmax+dTr,num)
+tr=np.linspace(Trmin,Trmax,num)
 dum=np.zeros([1,2])
 for i,Tair in enumerate(tdb):
 	for j,Trad in enumerate(tr):
