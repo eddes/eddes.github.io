@@ -12,7 +12,7 @@ On the agenda:
 - [x]  [integration of interpolated data (yes.)](https://eddes.github.io/#combine-integrate-your-measured-data)
 - [x]  [equation solving](https://eddes.github.io/#solving-equations)
 - [ ]  sensivity analysis
-- [ ]  metamodeling
+- [x]  metamodeling
 
 
 ## Data interpolation
