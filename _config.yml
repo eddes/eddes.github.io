@@ -6,3 +6,4 @@ logo: /img/metamodel.png
 description: A selection of tools in python for modelling, building physics etc.
 
 show_downloads: False
+show_social: True
