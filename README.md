@@ -1,7 +1,7 @@
 ### eddes.github.io
 
-On this page, a few tools and methods gathered along the way.
-Might prove to be useful for people dealing with measured data, equations or teaching.
+On this page, a few tools and methods during the last years of modeling (wish I had known this when it all started!).
+This page might prove to be useful for people dealing with measured data, equations or teaching.
 
 
 On the agenda:
@@ -11,7 +11,8 @@ On the agenda:
 - [x]  [function integration](https://eddes.github.io/#numerical-integration)
 - [x]  [integration of interpolated data (yes.)](https://eddes.github.io/#combine-integrate-your-measured-data)
 - [x]  [equation solving](https://eddes.github.io/#solving-equations)
-- [ ]  tips & tricks with `pyvista` (depending on the mood!)
+- [ ]  sensivity analysis
+- [ ]  metamodeling
 
 
 ## Data interpolation
@@ -125,7 +126,7 @@ You will find two examples below to kick-start your code.
 The equation of the wet-bulb temperature is defined in function of itself
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T_a + \frac{p_v-p_{vs}(T_w)}{C_p(p - p_{vs}(T_w)} \times 0.622 \times (L_v - 2.65 T)" title="T_{wb}= T_a + \frac{p_v-p_{vs}(T_{wb})}{C_p(p - p_{vs}(T_{wb}))} \times 0.622 \times (L_v - 2.65 T)" />
 
-A simple way to solve this (complicated) equation it is to create a function in the form `Twb-f(Twb)=0` and to ask the specialised procedure `fsolve` to do it for us:
+A simple way to solve this (complicated) equation it is to create a function of `Twb` that `return Twb-f(Twb)=0` and to ask the specialised procedure `fsolve` to do it for us:
 
 ```python
 import numpy as np # for generic math/array operations
@@ -156,7 +157,19 @@ print("wet bulb temperature", Twb)
 ```
 You can now replace the function `fc_Twb` by the one of your choice and ask `scipy` to `fsolve` it for you!
 
-### A cool example with _n_ unknowns
-	
 [under construction]
 
+### A cool example with _n_ unknowns
+	
+## Sensitivity Analysis: Morris's method
+
+Some models are complex and require an important number of parameters. It is often useful to know which of the parameters are the most influential on the observed output of the model (e.g. for building simulation: is it the wall insulation level or the properties of windows that affect most the energy consumption?).
+
+Dedicated mathematical methods for such a ranking of parameters do exist. Most of them are based on the observation of the output of a limited number of well-chosen simulations of the model. We will use the [`SAlib`](https://salib.readthedocs.io/) sensitivity analysis package and especially [Morris' method](https://en.wikipedia.org/wiki/Morris_method), which is easy to understand (the average effect of each parameter variation and the standard deviaton between two simulations are observed).
+
+The package [`pythermalcomfort`](pythermalcomfort.readthedocs.io/) will serve as an example here.
+
+
+## Metamodeling: Kriging
+
+Some models are costly in terms of simulation time.
