@@ -1,8 +1,9 @@
 theme: jekyll-theme-minimal
 
-author: E. Walther
-  type      : person
-  name      : Test
-  url       : www.bp.py.com
-  avatar    : /img/metamodel.png
-  bio: >
+title: e e
+email: x.y@gmail.com
+logo: /img/metamodel.png
+description: Personal page, who i am as well as some stuff I do and / or like !
+
+show_downloads: False
+show_social: True
