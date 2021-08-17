@@ -17,10 +17,16 @@ tagline: >
 
 email: a.b@gmail.com # email for form submission
 
-#twitter_username: fidelechevarria # replace with your_twitter_username or comment to remove link from footer
 github_username:  eddes # replace with your_github_username or comment to remove link from footer
 linkedin_username: Edouard.Walther
 
-# BUILD SETTINGS
+
+include: ['_pages']
+permalink: /:title/
+
+compress_html:
+  clippings: all
+
 plugins:
+  - jekyll-sitemap
   - jekyll-seo-tag
