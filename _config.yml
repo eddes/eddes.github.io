@@ -1,7 +1,7 @@
 theme: jekyll-theme-minimal
 
 author: E. Walther
-  type      : organization # "person" (default), "organization"
+  type      : person
   name      : Test
   url       :
   avatar    : /img/metamodel.png
