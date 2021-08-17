@@ -11,8 +11,8 @@ On the agenda:
 - [x]  [function integration](https://eddes.github.io/#numerical-integration)
 - [x]  [integration of interpolated data (yes.)](https://eddes.github.io/#combine-integrate-your-measured-data)
 - [x]  [equation solving](https://eddes.github.io/#solving-equations)
-- [ ]  sensivity analysis (under construction)
-- [x]  metamodeling
+- [ ]  [sensivity analysis](https://eddes.github.io/#sensitivity-analysis-morris-s-method) (under construction) 
+- [x]  [metamodeling](https://eddes.github.io/#metamodeling-kriging)
 
 
 ## Data interpolation
