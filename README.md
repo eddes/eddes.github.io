@@ -177,3 +177,5 @@ Some models are costly in terms of simulation time. When numerous runs of the mo
 Creating a metamodel is much like adding a polynomial fit or a trend curve on your favorite spreadsheet software, excepted that there can be numerous input parameters. It can hence be seen as an interpolation method.
 
 The kriging procedure of the much appreciated package [`SMT`](smt.readthedocs.io/) will be used in the sequel. Since you may have installed/used the `pythermalcomfort` package with the example above, we will create a metamodel for the SET.
+
+![Metamodel](/img/metamodel.png)
