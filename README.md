@@ -206,6 +206,6 @@ sm.set_training_values(xt, yt)
 sm.train()  # --> this is the costly part
 ```
 
-This [code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermalcomfort.py) allows to produce following output, with a reasonable 0.11 [K] of average error on the prediction.
+This [code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermalcomfort.py) allows to produce following output, with a reasonable 0.15 [K] of average error on the prediction.
 
 ![Metamodel](/img/metamodel.png)
