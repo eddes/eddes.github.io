@@ -11,7 +11,7 @@ On the agenda:
 - [x]  [function integration](https://eddes.github.io/#numerical-integration)
 - [x]  [integration of interpolated data (yes.)](https://eddes.github.io/#combine-integrate-your-measured-data)
 - [x]  [equation solving](https://eddes.github.io/#solving-equations)
-- [ ]  [sensivity analysis](https://eddes.github.io/#sensitivity-analysis-morris-s-method)
+- [ ]  [sensivity analysis](https://eddes.github.io/#sensitivity-analysis)
 - [x]  [metamodeling](https://eddes.github.io/#metamodeling-kriging)
 
 
@@ -123,9 +123,8 @@ You will find two examples below to kick-start your code.
 	
 ### Computing the wet bulb temperature (one unknown)
 
-The equation of the wet-bulb temperature is defined in function of itself
+The equation of the wet-bulb temperature is defined in function of itself:
 
-The equation of the wet-bulb temperature is defined in function of itself
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T + \frac{p_v-p_{vs}(T_{wb})}{C_p(p-p_{vs}(T_{wb}))} \times 0.622 \times (L_v - 2.65 T) " title="T_{wb}= T + \frac{p_v-p_{vs}(T_{wb})}{C_p(p-p_{vs}(T_{wb}))} \times 0.622 \times (L_v - 2.65 T)" />
 
 ![image](https://user-images.githubusercontent.com/8697654/129699333-9b6058ed-15cc-4cc8-bcf3-cf954befd38e.png)
@@ -165,7 +164,7 @@ You can now replace the function `fc_Twb` by the one of your choice and ask `sci
 
 [under construction, possibly the radiosity method]
 
-## Sensitivity Analysis: Morris's method
+## Sensitivity Analysis
 
 Some models are complex and require an important number of parameters. It is often useful to know which of the parameters are the most influential on the observed output of the model (e.g. for building simulation: is it the wall insulation level or the properties of windows that affect most the energy consumption?). In the case of optimisation, knowing the influential parameters allows for instance to concentrate the computational effort on the meaningful inputs with regard to the considered output.
 
