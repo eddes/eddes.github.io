@@ -178,22 +178,17 @@ Creating a metamodel is much like adding a polynomial fit or a trend curve on yo
 
 The kriging procedure of the much appreciated package [`SMT`](smt.readthedocs.io/) will be used in the sequel. Since you may have installed/used the `pythermalcomfort` package with the example above, we will create a metamodel for the SET.
 
+Imagine that we want to avoid the computation of the SET comfort index and still be able to obtain its value depending on the air temperature and the radiant temperature. We will set up such a metamodel in the following code lines:
 
 ```python
-import numpy as np
-from pythermalcomfort.models import set_tmp
-from smt.sampling_methods import LHS
-from smt.surrogate_models import KRG
-
 # boundaries of the air and radiant temperatures
 Tmin,Tmax=10,40 # air temperature
-dTr=20 # radiant temperature as an increase of the air temp
-xlimits = np.array([[Tmin, Tmax], [Tmin+dTr, Tmax+dTr]])
+Trmin,Trmax=20,40 # radiant temperature
+xlimits = np.array([[Tmin, Tmax], [Trmin, Trmax]])
 
 #metamodel set up
-nb_LHS = 200 # number of evaluations
-type_metam="KRG"
-# type of sampling > imho LHS fits best
+nb_LHS = 100 # number of evaluations
+# type of sampling 
 sampling = LHS(xlimits=xlimits, criterion='c')
 # sample data set
 xt = sampling(nb_LHS)
@@ -211,6 +206,6 @@ sm.set_training_values(xt, yt)
 sm.train()  # --> this is the costly part
 ```
 
-This [code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermalcomfort.py) allows to produce following output.
+This [code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermalcomfort.py) allows to produce following output, with a reasonable 0.11 [K] of average error on the prediction.
 
 ![Metamodel](/img/metamodel.png)
