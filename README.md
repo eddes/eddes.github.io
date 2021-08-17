@@ -2,7 +2,7 @@
 
 On this page, a few tools and methods during the last years of modeling (wish I had known this when it all started!).
 This page might prove to be useful for people dealing with measured data, equations, modelling or teaching.
-
+The theory behind the scenes is not tackled: only the practical aspects are shown with minimum working examples.
 
 On the agenda:
 
