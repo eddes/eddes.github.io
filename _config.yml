@@ -5,4 +5,4 @@ email: on RG
 logo: /img/metamodel.png
 description: A few tools in python
 
-show_downloads: True
+show_downloads: False
