@@ -125,6 +125,9 @@ You will find two examples below to kick-start your code.
 
 The equation of the wet-bulb temperature is defined in function of itself
 
+The equation of the wet-bulb temperature is defined in function of itself
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;T_{wb}= T + \frac{p_v-p_{vs}(T_{wb})}{C_p(p-p_{vs}(T_{wb}))} \times 0.622 \times (L_v - 2.65 T) " title="T_{wb}= T + \frac{p_v-p_{vs}(T_{wb})}{C_p(p-p_{vs}(T_{wb}))} \times 0.622 \times (L_v - 2.65 T)" />
+
 ![image](https://user-images.githubusercontent.com/8697654/129699333-9b6058ed-15cc-4cc8-bcf3-cf954befd38e.png)
 
 A simple way to solve this (complicated) equation it is to create a function of `Twb` that `return Twb-f(Twb)=0` and to ask the specialised procedure `fsolve` to do it for us:
