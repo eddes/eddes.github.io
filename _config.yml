@@ -3,6 +3,6 @@ theme: jekyll-theme-minimal
 title: Edouard WALTHER
 email: on RG
 logo: /img/metamodel.png
-description: A few tools in python
+description: A selection of tools in python for modelling, building physics etc.
 
 show_downloads: False
