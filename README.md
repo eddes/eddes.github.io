@@ -1,7 +1,7 @@
 ### eddes.github.io
 
 On this page, a few tools and methods during the last years of modeling (wish I had known this when it all started!).
-This page might prove to be useful for people dealing with measured data, equations or teaching.
+This page might prove to be useful for people dealing with measured data, equations, modelling or teaching.
 
 
 On the agenda:
@@ -177,5 +177,40 @@ Some models are costly in terms of simulation time. When numerous runs of the mo
 Creating a metamodel is much like adding a polynomial fit or a trend curve on your favorite spreadsheet software, excepted that there can be numerous input parameters. It can hence be seen as an interpolation method.
 
 The kriging procedure of the much appreciated package [`SMT`](smt.readthedocs.io/) will be used in the sequel. Since you may have installed/used the `pythermalcomfort` package with the example above, we will create a metamodel for the SET.
+
+
+```python
+import numpy as np
+from pythermalcomfort.models import set_tmp
+from smt.sampling_methods import LHS
+from smt.surrogate_models import KRG
+
+# boundaries of the air and radiant temperatures
+Tmin,Tmax=10,40 # air temperature
+dTr=20 # radiant temperature as an increase of the air temp
+xlimits = np.array([[Tmin, Tmax], [Tmin+dTr, Tmax+dTr]])
+
+#metamodel set up
+nb_LHS = 200 # number of evaluations
+type_metam="KRG"
+# type of sampling > imho LHS fits best
+sampling = LHS(xlimits=xlimits, criterion='c')
+# sample data set
+xt = sampling(nb_LHS)
+yt=np.empty([nb_LHS]) # prepare array for filling
+
+# air velocity (m/s) and relative humidity (%)
+vair,hum=0.15, 55
+for k in range(len(xt)):
+	Ta,Tr,v,hum=xt[k,0], xt[k,1], vair, hum # put it in a readable way
+	yt[k]=set_tmp(tdb=Ta, tr=Tr, v=v, rh=hum, met=1.2, clo=.5) # evaluate the function
+
+# prepare the metamodel
+sm = KRG(theta0=[1e-3], corr='abs_exp')
+sm.set_training_values(xt, yt)
+sm.train()  # --> this is the costly part
+```
+
+This [code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermalcomfort.py) allows to produce following output.
 
 ![Metamodel](/img/metamodel.png)
