@@ -13,6 +13,7 @@ On the agenda:
 - [x]  [equation solving](https://eddes.github.io/#solving-equations)
 - [x]  [sensivity analysis](https://eddes.github.io/#sensitivity-analysis)
 - [x]  [metamodeling](https://eddes.github.io/#metamodeling-kriging)
+- [ ]  [parallelisation](https://eddes.github.io/#go-parallel) (under construction)
 
 
 ## Data interpolation
@@ -254,3 +255,10 @@ Once the metamodel is trained, it can be used for prediction with the simple ins
 The [full code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermalcomfort.py) allows to produce following output, with a reasonable 0.15 [K] of average error on the prediction of the SET _versus_ the original one.
 
 ![Metamodel](/img/metamodel.png)
+
+
+## Go parallel
+
+Parallelism has become very affordable and easy over the years.
+[under construction]
+
