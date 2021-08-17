@@ -1,9 +1,7 @@
 theme: jekyll-theme-minimal
-
 title: Edouard WALTHER
 logo: /img/metamodel.png
 email: https://www.linkedin.com/in/edouard-walther-8b0867a6/
 description: A selection of tools in python for modelling, building physics etc.
 
 show_downloads: False
-show_social: False
