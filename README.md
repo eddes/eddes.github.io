@@ -193,7 +193,7 @@ problem = {
 # generate samples
 N_repetitions=50 
 # number of function evaluations we are  going to perform:
-print("Evaluations ", N_repetitions*(num_vars+1)
+print("Evaluations ", N_repetitions*(num_vars+1))
 # prepare evaluations
 param_values= sample(problem, N_repetitions, num_levels=4)
 Nmax=max(np.shape(param_values)) # values as output
