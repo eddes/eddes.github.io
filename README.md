@@ -1,6 +1,6 @@
 ## Intro
 
-On this page, a few tools and methods during the last years of modeling (wish I had known this when it all started!).
+On this page, a few tools and methods gathered during the last years of practice (wish I had known this when it all started!).
 This page might prove to be useful for people dealing with measured data, equations, modelling or teaching.
 The theory behind the scenes is not tackled: only the practical aspects are shown with minimum working examples.
 
@@ -124,7 +124,7 @@ You will find two examples below to kick-start your code.
 	
 ### Computing the wet bulb temperature (one unknown)
 
-The equation of the wet-bulb temperature is defined in function of itself:
+The equation of the wet-bulb temperature is defined as a function of itself:
 
 ![Equation](/img/eq.png)
 
@@ -223,7 +223,7 @@ Creating a metamodel is much like adding a polynomial fit or a trend curve on yo
 
 The kriging procedure of the much appreciated package [`SMT`](smt.readthedocs.io/) will be used in the sequel. Since you may have installed/used the `pythermalcomfort` package with the example above, we will create a metamodel for the SET.
 
-Imagine that we want to avoid the computation of the SET comfort index and still be able to obtain its value depending on the air temperature and the radiant temperature. We will set up such a metamodel in the following code lines:
+Imagine that for future use, we want to avoid the computation of the SET comfort index with `set_temp()` from `pythermalcomfort` (suppose it takes too long) and still be able to obtain its value depending on the **air temperature** and the **radiant temperature**. We will set up such a metamodel in the following code lines:
 
 ```python
 # boundaries of the air and radiant temperatures
