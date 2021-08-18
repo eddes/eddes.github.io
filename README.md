@@ -13,7 +13,7 @@ On the agenda:
 - [x]  [equation solving](https://eddes.github.io/#solving-equations)
 - [x]  [sensivity analysis](https://eddes.github.io/#sensitivity-analysis)
 - [x]  [metamodeling](https://eddes.github.io/#metamodeling-kriging)
-- [ ]  [parallelisation](https://eddes.github.io/#go-parallel) (under construction)
+- [x]  [parallelisation](https://eddes.github.io/#go-parallel)
 
 
 ## Data interpolation
