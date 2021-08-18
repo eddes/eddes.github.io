@@ -96,7 +96,7 @@ lambda_m=2898/Tsun
 # ... indeed most of the energy of the black-body spectrum is comprised 
 # between 0.5 and 5 lambda_max, hence no need for a larger integration range
 E_sun= integrate.quad(lambda x: black_body_radiation(x,Tsun), 0.5*lambda_m, 5*lambda_m)[0]
-print("radiation of the black body", E_sun, [W])
+print("radiation of the black body", E_sun, " [W]")
 ```
 
 ![Integrated black body spectrum](/img/M0k.png)
