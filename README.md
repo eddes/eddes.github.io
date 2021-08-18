@@ -182,16 +182,16 @@ from SALib.sample.morris import sample
 # Define the model inputs
 problem = {
     'num_vars': 4, # nb variables
-    'names': [r'$T_a$', r'$T_r$', 'v', 'RH'], # variables names
-    'bounds': [[10,40], # les limites de chacune (borne min/max)
+    'names': [r'$T_a$', r'$T_r$', 'v', 'RH'], # variable names
+    'bounds': [[10,40], # lmin/max for each variable
                [10,40],
                [0.1,1],
                [10,90]]
 }
 # generate samples
-N_evaluations=50 # combien d'evaluations
+N_evaluations=50 # how many evaluations are we going to perform
 # prepare evaluations
-param_values= sample(problem, N_evaluations, num_levels=4) # num_levels/(2*(num_levels-1))
+param_values= sample(problem, N_evaluations, num_levels=4)
 Nmax=max(np.shape(param_values)) # values as output
 
 # the call looks like
@@ -208,7 +208,7 @@ Y=np.ones((Nmax))
 for i,p in enumerate(param_values_with_metclo):
 	Y[i]= set_tmp(*p)
 
-# Perform analysis (une fois qu'on a tous les resultats dans le vecteur Y)
+# Perform analysis with the results in array Y[i]
 Si = morris.analyze(problem, param_values, Y, conf_level=0.95,print_to_console=True, num_levels=4)
 ```
 The [code](https://github.com/eddes/eddes.github.io/blob/main/AS_seq_SET.py) generates following output, showing that the air temperature is the most influential parameter within this range of evaluation. The radiant temperature is on the first bisector, meaning its average effect is of the order of magnitude of the standard deviation: possibly non-linear interactions between parameters may occur.
@@ -260,5 +260,30 @@ The [full code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermal
 ## Go parallel
 
 Parallelism has become very affordable and easy over the years.
-[under construction]
+Still using the `pythermalcomfort` package, a minimum working example of parallelisation is provided. It can be modified and applied to any other function (running EnergyPlus, reading files, ...).
 
+
+```python
+import numpy as np
+from pythermalcomfort.models import set_tmp
+from joblib import Parallel, delayed
+
+# let's do a couple of runs
+N_evaluations=100000
+
+# prepare the arrays for the example
+array_Ta=np.ones(N_evaluations)*20
+array_Tr=np.ones(N_evaluations)*25
+array_v=np.ones(N_evaluations)*0.1
+array_RH=np.ones(N_evaluations)*50
+array_met=np.ones(N_evaluations)*1.2
+array_clo=np.ones(N_evaluations)*0.5
+param_values=np.hstack([array_Ta[:,None],array_Tr[:,None],array_v[:,None], array_RH[:,None], array_met[:,None],array_clo[:,None]])
+
+#the parallel execution is below this line
+if __name__ == '__main__':
+	num_cores = 4
+	SET_array=Parallel(n_jobs=num_cores)(delayed(set_tmp)(*p) for p in param_values)
+```
+
+_Note: if the function to be parallelised is usually not taking too long, you may experience little to no speed-up or even an increase of the execution time. Parallelise wise!_
