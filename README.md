@@ -6,16 +6,14 @@ The theory behind the scenes is not tackled: only the practical aspects are show
 
 On the agenda:
 
-[x]  [data interpolation](https://eddes.github.io/#data-interpolation)
-
-[x]  [data resampling](https://eddes.github.io/#resampling-data)
-
-[x]  [function integration](https://eddes.github.io/#numerical-integration)
-[x]  [integration of interpolated data (yes.)](https://eddes.github.io/#combine-integrate-your-measured-data)
-[x]  [equation solving](https://eddes.github.io/#solving-equations)
-[x]  [sensivity analysis](https://eddes.github.io/#sensitivity-analysis)
-[x]  [metamodeling](https://eddes.github.io/#metamodeling-kriging)
-[x]  [parallelisation](https://eddes.github.io/#go-parallel)
+- [x]  [data interpolation](https://eddes.github.io/#data-interpolation)
+- [x]  [data resampling](https://eddes.github.io/#resampling-data)
+- [x]  [function integration](https://eddes.github.io/#numerical-integration)
+- [x]  [integration of interpolated data (yes.)](https://eddes.github.io/#combine-integrate-your-measured-data)
+- [x]  [equation solving](https://eddes.github.io/#solving-equations)
+- [x]  [sensivity analysis](https://eddes.github.io/#sensitivity-analysis)
+- [x]  [metamodeling](https://eddes.github.io/#metamodeling-kriging)
+- [x]  [parallelisation](https://eddes.github.io/#go-parallel)
 
 
 ## Data interpolation
