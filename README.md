@@ -215,7 +215,7 @@ for i,p in enumerate(param_values_with_metclo):
 # Perform analysis with the results in array Y[i]
 Si = morris.analyze(problem, param_values, Y, conf_level=0.95,print_to_console=True, num_levels=4)
 ```
-The [code](https://github.com/eddes/eddes.github.io/blob/main/AS_seq_SET.py) generates following output, showing that the air temperature is the most influential parameter within this range of evaluation. The radiant temperature is on the first bisector, meaning its average effect is of the order of magnitude of the standard deviation: possibly non-linear interactions between parameters may occur.
+The [code](https://github.com/eddes/eddes.github.io/blob/main/AS_seq_SET.py) generates following output, showing that the air temperature is the most influential parameter within this range of evaluation. The relative humidity has a smaller effect but it lies on the first bisector, meaning its average effect is of the order of magnitude of the standard deviation: non-linearity possibly arises in the model or interactions between parameters may occur.
 
 ![results of the sensivitity analysis](/img/AS.png)
 
