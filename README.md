@@ -205,7 +205,7 @@ array_clo=np.ones(len(param_values))*0.5
 param_values_with_metclo=np.hstack([param_values, array_met[:,None],array_clo[:,None]])
 
 # prepare the output array
-Y=np.ones((Nmax)) 
+Y=np.empty((Nmax)) 
 # do the function evaluation
 for i,p in enumerate(param_values_with_metclo):
 	Y[i]= set_tmp(*p)
