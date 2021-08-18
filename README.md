@@ -1,8 +1,8 @@
 ## Intro
 
-On this page, a few tools and methods gathered during the last years of practice (wish I had known this when it all started!).
+On this page, a few tools and methods gathered over the past years of practice as a pythonist (wish I had known this when it all started!).
 This page might prove to be useful for people dealing with measured data, equations, modelling or teaching.
-The theory behind the scenes is not tackled: only the practical aspects are shown with minimum working examples.
+The theory behind the scenes is not tackled: only the practical aspects are shown with minimal working examples.
 
 On the agenda:
 
@@ -18,13 +18,13 @@ On the agenda:
 
 ## Data interpolation
 
-In this section, we will use the solar spectrum data provided by the NREL called [ASTM AM 1.5](https://www.nrel.gov/grid/solar-resource/spectra-am1.5.html) and corresponding to ground level solar radiation, including the absorption of radiation by gases in the atmosphere.
+In this section, we will use the ground level solar spectrum radiation data provided by the NREL ([ASTM AM 1.5](https://www.nrel.gov/grid/solar-resource/spectra-am1.5.html)). It includes the absorption of radiation by gases in the atmosphere.
 
-The aim is to create an interpolation function in order to obtain the values at different abscissa `scipy.integrate`.
-The main features of the code are here, pretty much straightforward with the comments:
+The aim is to create an interpolation function in order to obtain the values at different abscissa using `scipy.interpolate`.
+The main features of the code are presented below and should roll gently with the comments:
 
 ```python
-import pandas as pd # pandas will help reading the xls file
+import pandas as pd # pandas will help reading the xls file containing the data
 import scipy.interpolate # interpolation package 
 
 # let us read the radiation data 
@@ -50,7 +50,7 @@ You can [get the data](https://github.com/eddes/eddes.github.io/blob/main/ASTMed
 
 ## Resampling data
 
-It is often useful to resample data in the field of building physics. For instance if you have measured data at 1 hour interval and require a 10 minutes interval. No need to worry about creating your own interpolation routine: Using exactly the same procedure as above, you can proceed as follows.
+In many fields, being able to resample data is often useful. For instance if you have measured data at 1 hour interval and require values every 10 minutes. No need to worry about creating your own interpolation routine: Using exactly the same procedure as above, you can proceed as follows.
 
 ```python
 import numpy as np # numpy import for convenience
@@ -67,11 +67,11 @@ resampled_radiation = fc_interp(wavelengths)
 ```
 ![Resampling data](/img/resamp.png)
 	
-_(looks weird, I know... usually you resample the other way around: with more data!)_
+_(looks weird, indeed... usually you resample the other way around: with more data!)_
 	
 ## Numerical integration
 
-Life is beautiful since numerical integration was invented (even more since integration was made possible with less than 10 lines of code).
+Life is beautiful since the invention of numerical integration. It is even more so since it was made possible with less than 10 lines of code.
 Using the same physical problem as the previous example, let us now compute the black body radiation emitted by the sun over its spectrum.
 
 We will therefore use [Planck's law](https://en.wikipedia.org/wiki/Planck%27s_law) for the black body emission, which forms more than half the code required, as you can see for yourself below.
@@ -108,18 +108,19 @@ It is sometimes handy to integrate measured data (e.g. power over time &rarr; en
 Imagine that for some reason, you want to compute the energy comprised in the ASTM solar data of the first example.
 You can either do it directly in the .xls file provided, using the [rectangle integration method](https://en.wikipedia.org/wiki/Numerical_integration#Quadrature_rules_based_on_interpolating_functions), or follow the tutorial presented here.
 	
-You may have noticed that numerical integration requires a function to be integrated (e.g. `black_body_radiation()` in the script above).
-Very handily, the interpolation function proposed in the previous section provides `fc_interp()` which allows to determine the value of the function for any abscissa (within the measured abscissa).
+You may have noticed that numerical integration requires a function to be integrated (that is: `black_body_radiation()` in the script above).
+Very handily, the interpolation function proposed in the previous section provides `fc_interp()` which allows for the determination of the value of the function at any abscissa (_within_ the data, no extrapolation).
 
 ```python
 import scipy.integrate as integrate #
 E_sun= integrate.quad(lambda x: fc_interp(x), min(x), max(x))[0]
 print("and the solar energy spectrum contains...", E_sun, " Watts!")
 ```
-	
+_(if you find a value above 1000 W, call the NREL and complain)_
+
 ## Solving equations
 
-Problems are much simpler when computers solve equations or systems of equations for us.
+Equations are suddenly much simpler when computers solve them for us.
 You will find two examples below to kick-start your code.
 	
 ### Computing the wet bulb temperature (one unknown)
