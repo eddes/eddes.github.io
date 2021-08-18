@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
 title: 8 essential skills in python for building physics
-description: A selection of tools in python for modelling, building physics etc.
+description: Applied examples of data interpolaton, integration, equation solving, sensitivity analysis, metamodeling etc.
 logo: /img/metamodel.png
 show_downloads: False
