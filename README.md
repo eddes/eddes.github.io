@@ -260,7 +260,7 @@ The [full code](https://github.com/eddes/eddes.github.io/blob/main/SMT_pythermal
 ## Go parallel
 
 Parallelism has become very affordable and easy over the years.
-Still using the `pythermalcomfort` package, a minimum working example of parallelisation is provided. It can be modified and applied to any other function (running EnergyPlus, reading files, ...).
+Still using the `pythermalcomfort` package, a minimum working example of parallelisation is provided. It can be modified and applied to any other function call (running EnergyPlus, reading files, computing averages _etc._).
 
 
 ```python
@@ -286,4 +286,4 @@ if __name__ == '__main__':
 	SET_array=Parallel(n_jobs=num_cores)(delayed(set_tmp)(*p) for p in param_values)
 ```
 
-_Note: if the function to be parallelised is usually not taking too long, you may experience little to no speed-up or even an increase of the execution time. Parallelise wise!_
+_Note - If the function to be parallelised is not really computationally expensive (as is the case here), you may experience little to no speed-up or even an increase of the execution time. Parallelise wise!_
