@@ -287,3 +287,14 @@ if __name__ == '__main__':
 ```
 
 _Note - If the function to be parallelised is not really computationally expensive (as is the case here), you may experience little to no speed-up or even an increase of the execution time. Parallelise wise!_
+
+An alternative using `pool` that should display a fancy progress bar:
+
+```python
+from tqdm import tqdm
+from multiprocessing import Pool
+if __name__ == '__main__':
+	num_cores = 4
+	with Pool(processes=num_cores) as p:
+		SET_array=list(tqdm(p.starmap(set_tmp, param_values),total=len(param_values)))
+```
