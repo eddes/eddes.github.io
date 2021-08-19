@@ -101,7 +101,7 @@ print("radiation of the black body", E_sun, " [W]")
 
 ![Integrated black body spectrum](/img/M0k.png)
 
-_(finding a value above 1000 W is ok since we consider here the extraterrestrial sun radiation - don't try and call Max Planck)_
+_(finding a value above 1000 W is ok since we consider here the extraterrestrial sun radiation - don't complain to Max Planck)_
 
 ## Combine: Integrate your measured data
 
