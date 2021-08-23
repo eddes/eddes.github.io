@@ -81,13 +81,13 @@ import scipy.integrate as integrate # import the integration method
 
 # Planck's emission law depending on wavelength x [micrometers] and temperature T [K]
 def black_body_radiation(x,T):
-	#a few constants
-	h=6.62*10**(-34)
-	k=1.3805*10**(-23)
-	c=3*10**8
-	C1= 3.74*10**(8) # um**4
-	C2=1.43*10**4 # umK
-	return C1*x**(-5)/(np.exp(C2/(x*T))-1)*((6.957*10**8)/(149.598*10**9))**2
+    #a few constants
+    h=6.62*10**(-34)
+    k=1.3805*10**(-23)
+    c=3*10**8
+    C1= 3.74*10**(8) # um**4
+    C2=1.43*10**4 # umK
+    return C1*x**(-5)/(np.exp(C2/(x*T))-1)*((6.957*10**8)/(149.598*10**9))**2
 
 k = np.arange(0.05, 50, 0.001) # wavelength range in micrometers
 Tsun=5800 # K
@@ -139,14 +139,14 @@ from scipy.optimize import fsolve # queen of solving procedures
 
 # a function for the vapour pressure at saturation pvs(T)
 def pvs(T):
-	a,b=0.07252,0.0002881
-	c,d=0.00000079,611
-	return d * np.exp(a*T -b*np.power(T,2) + c*np.power(T,3))
+    a,b=0.07252,0.0002881
+    c,d=0.00000079,611
+    return d * np.exp(a*T -b*np.power(T,2) + c*np.power(T,3))
 
 # the function that will allow finding Twb depending on temperature T and vapour pressure pv
 def fc_Twb(Twb, T, pv):
-	Cp, p, Lv = 1006, 101325, 2400*1e3
-	return - Twb +T+ (pv-pvs(Twb))/(Cp*(p-pvs(Twb)))*0.622*(Lv-2.65*T)
+    Cp, p, Lv = 1006, 101325, 2400*1e3
+    return - Twb +T+ (pv-pvs(Twb))/(Cp*(p-pvs(Twb)))*0.622*(Lv-2.65*T)
 
 # let's define the temperature and vapour pressure conditions
 Ta = 40 # air dry bulb temperature
@@ -170,9 +170,9 @@ You can now replace the function `fc_Twb` by the one of your choice and ask `sci
 
 Some models are complex and require an important number of parameters. It is often useful to know which of the parameters are the most influential on the observed output of the model (e.g. for building simulation: is it the wall insulation level or the properties of windows that affect most the energy consumption?). In the case of optimisation, knowing the influential parameters allows for instance to concentrate the computational effort on the meaningful inputs with regard to the considered output.
 
-Dedicated mathematical methods establishing the ranking of parameters do exist (phew!). Most of them are based on the observation of the output of a limited number of well-chosen simulations of the model. We will use the [`SAlib`](https://salib.readthedocs.io/) sensitivity analysis package and especially [Morris' method](https://en.wikipedia.org/wiki/Morris_method), which is easy to understand (the average effect of each parameter variation and the standard deviaton between two simulations are observed).
+Dedicated mathematical methods establishing the ranking of parameters do exist (phew!). Most of them are based on the observation of the output of a limited number of well-chosen simulations of the model. We will use the [`SAlib`](https://salib.readthedocs.io/) sensitivity analysis package and especially [Morris' method](https://en.wikipedia.org/wiki/Morris_method), which is easy to understand (the average effect of each parameter variation and the standard deviation between two simulations are observed).
 
-The package [`pythermalcomfort`](pythermalcomfort.readthedocs.io/) will serve as an example here: we will use it in order to determine which abient parameters (air velocity, radiant temperature, air temperature, relative humidity) are the most influential on the _Standard Effective Temperature_ (SET) comfort index.
+The package [`pythermalcomfort`](pythermalcomfort.readthedocs.io/) will serve as an example here: we will use it in order to determine which ambient parameters (air velocity, radiant temperature, air temperature, relative humidity) are the most influential on the _Standard Effective Temperature_ (SET) comfort index.
 
 
 ```python
@@ -187,9 +187,9 @@ problem = {
     'num_vars': 4, # nb variables
     'names': [r'$T_a$', r'$T_r$', 'v', 'RH'], # variable names
     'bounds': [[10,40], # lmin/max for each variable
-               [10,40],
-               [0.1,1],
-               [10,90]]
+               [10,40], # radiant temperature
+               [0.1,1], # air velocity
+               [10,90]] # relative humidity
 }
 # generate samples
 N_repetitions=50 
@@ -211,7 +211,7 @@ param_values_with_metclo=np.hstack([param_values, array_met[:,None],array_clo[:,
 Y=np.empty((Nmax)) 
 # do the function evaluation
 for i,p in enumerate(param_values_with_metclo):
-	Y[i]= set_tmp(*p)
+    Y[i]= set_tmp(*p)
 
 # Perform analysis with the results in array Y[i]
 Si = morris.analyze(problem, param_values, Y, conf_level=0.95,print_to_console=True, num_levels=4)
@@ -247,8 +247,8 @@ yt=np.empty([nb_LHS]) # prepare array for filling
 # air velocity (m/s) and relative humidity (%)
 vair,hum=0.15, 55
 for k in range(len(xt)):
-	Ta,Tr,v,hum=xt[k,0], xt[k,1], vair, hum # put it in a readable way
-	yt[k]=set_tmp(tdb=Ta, tr=Tr, v=v, rh=hum, met=1.2, clo=.5) # evaluate the function
+    Ta,Tr,v,hum=xt[k,0], xt[k,1], vair, hum # put it in a readable way
+    yt[k]=set_tmp(tdb=Ta, tr=Tr, v=v, rh=hum, met=1.2, clo=.5) # evaluate the function
 
 # prepare the metamodel
 sm = KRG(theta0=[1e-3], corr='abs_exp')
@@ -287,19 +287,19 @@ param_values=np.hstack([array_Ta[:,None],array_Tr[:,None],array_v[:,None], array
 
 #the parallel execution is below this line
 if __name__ == '__main__':
-	num_cores = 4
-	SET_array=Parallel(n_jobs=num_cores)(delayed(set_tmp)(*p) for p in param_values)
+    num_cores = 4
+    SET_array=Parallel(n_jobs=num_cores)(delayed(set_tmp)(*p) for p in param_values)
 ```
 
 _Note - If the function to be parallelised is not really computationally expensive (as is the case here), you may experience little to no speed-up or even an increase of the execution time. Parallelise wise!_
 
-An alternative using `pool` with a fancy progress bar:
+An alternative using `pool` including a fancy progress bar:
 
 ```python
-from tqdm import tqdm
+from tqdm import tqdm # package for the progress bar
 from multiprocessing import Pool
 if __name__ == '__main__':
-	num_cores = 4
-	with Pool(processes=num_cores) as p:
-		SET_array=p.starmap(set_tmp, tqdm(param_values, total=len(param_values)))
+    num_cores = 4
+    with Pool(processes=num_cores) as p:
+        SET_array=p.starmap(set_tmp, tqdm(param_values, total=len(param_values)))
 ```
