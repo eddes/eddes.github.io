@@ -120,6 +120,8 @@ print("and the solar energy spectrum contains...", E_sun, " Watts!")
 ```
 _(if you find a value above 1000 W, call the NREL and complain)_
 
+_Nota bene:_  saw-toothed data samples may lead to the display of some warning-verbose. You may want to double-check the order of magnitude of the value obtained with a good old rectangle method of integration like ```integral=np.sum(f(x))*dx```.
+
 ## Solving equations
 
 Equations are suddenly much simpler when computers solve them for us.
