@@ -228,7 +228,7 @@ Some models are costly in terms of simulation time. When numerous runs of the mo
 
 Creating a metamodel is much like adding a polynomial fit or a trend curve on your favorite spreadsheet software, excepted that there can be numerous input parameters. It can hence be seen as an interpolation method (and actually it is a renowned for its efficiency in field interpolation).
 
-The kriging procedure of the much appreciated package [`SMT`](smt.readthedocs.io/) will be used in the sequel. Since you may have installed/used the `pythermalcomfort` package with the example above, we will create a metamodel for the SET.
+The [kriging](https://en.wikipedia.org/wiki/Kriging) procedure of the much appreciated package [`SMT`](smt.readthedocs.io/) will be used in the sequel. Since you may already have installed/used the `pythermalcomfort` package with the example above, we will create a metamodel for the SET.
 
 Imagine that for future use, we want to avoid the computation of the SET comfort index with `set_temp()` from `pythermalcomfort` (suppose it takes too long) and still be able to obtain its value depending on the **air temperature** and the **radiant temperature**. We will set up such a metamodel in the following code lines:
 
