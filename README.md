@@ -50,7 +50,7 @@ You can [get the data](https://github.com/eddes/eddes.github.io/blob/main/ASTMed
 
 ## Resampling data
 
-In many fields, being able to resample data is often useful. For instance if you have measured data at 1 hour interval and require values every 10 minutes. No need to worry about creating your own interpolation routine: Using exactly the same procedure as above, you can proceed as follows.
+In many fields, being able to resample data is of practical use. For instance if you have measured data at 1 hour interval and require values every 10 minutes. No need to worry about creating your own interpolation routine: Using exactly the same procedure described above, you can proceed as follows.
 
 ```python
 import numpy as np # numpy import for convenience
@@ -129,7 +129,7 @@ You will find two examples below to kick-start your code.
 	
 ### Computing the wet bulb temperature (one unknown)
 
-The equation of the wet-bulb temperature is defined as a function of itself:
+The wet-bulb temperature is defined in the equation below as a function of itself:
 
 ![Equation](/img/eq.png)
 
@@ -295,7 +295,7 @@ if __name__ == '__main__':
 
 _Note - If the function to be parallelised is not really computationally expensive (as is the case here), you may experience little to no speed-up or even an increase of the execution time. Parallelise wise!_
 
-An alternative using `pool` including a fancy progress bar:
+An alternative using `pool` including a fancy progress bar is proposed hereinafter (note the used of `tqdm` and the function call):
 
 ```python
 from tqdm import tqdm # package for the progress bar
