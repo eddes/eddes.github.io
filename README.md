@@ -226,7 +226,7 @@ The [code](https://github.com/eddes/eddes.github.io/blob/main/AS_seq_SET.py) gen
 
 Some models are costly in terms of simulation time. When numerous runs of the model with differents sets of parameters are required, the creation of a _metamodel_ is often an interesting means of reducing the computational cost.
 
-Creating a metamodel is much like adding a polynomial fit or a trend curve on your favorite spreadsheet software, excepted that there can be numerous input parameters. It can hence be seen as an interpolation method (and actually it is a renowned for its efficiency in field interpolation).
+Creating a metamodel is much like adding a polynomial fit or a trend curve on your favorite spreadsheet software, excepted that there can be numerous input parameters. It can hence be seen as an interpolation method (and actually it is renowned for its efficiency in field interpolation).
 
 The [kriging](https://en.wikipedia.org/wiki/Kriging) procedure of the much appreciated package [`SMT`](smt.readthedocs.io/) will be used in the sequel. Since you may already have installed/used the `pythermalcomfort` package with the example above, we will create a metamodel for the SET.
 
