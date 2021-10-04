@@ -171,10 +171,11 @@ Suppose we want to compute the total fluxes between the internal faces of a cube
 The radiosity is the total radiative flux emitted and reflected by a face.
  <img src="/img/scheme_J.png" alt="Radiosity" width="300"/>
 
-The system to be solved is hence the following:
+The system to be solved depending on the temperatures and emissivities writes as:
 ![Equation system](/img/radiosity.png)
 
-Let us imagine that the cube faces are at 10°C, except for the bottom (-10°C). Faces are numbered as follows.
+Let us imagine that the cube faces are at 10°C, while the bottow is maintained at a cool 10°C. Faces are numbered as per the sketch below.
+
  <img src="/img/cube.png" alt="cube" width="200"/>
  
  The code writes as follows. The major part of it is dedicated to the (dirty) filling of the view factor matrix. 
