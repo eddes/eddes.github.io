@@ -176,6 +176,7 @@ The system to be solved is hence the following:
 
 Let us imagine that the cubeh faces are at 10°C, except for the bottom (-10°C). Faces are numbered as follows.
 ![Cube faces](/img/cube.png)
+ <img src="/img/cube.png" alt="cube" width="200"/>
  
  The code writes as follows. The major part of it is dedicated to the (dirty) filling of the view factor matrix. 
  ```python
