@@ -178,7 +178,7 @@ Let us imagine that the cubeh faces are at 10°C, except for the bottom (-10°C)
 ![Cube faces](/img/cube.png)
  
  The code writes as follows. The major part of it is dedicated to the (dirty) filling of the view factor matrix. 
- ``` 
+ ```python
 import numpy as np
 from scipy.optimize import fsolve
 
@@ -219,7 +219,6 @@ print("Radiosities [W/m2]", J)
 E=np.dot(Fij,J)
 print("Total radiation [W/m2] ", E)
 ```
-
 
 ## Sensitivity Analysis
 
