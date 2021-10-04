@@ -169,10 +169,10 @@ You can now replace the function `fc_Twb` by the one of your choice and ask `sci
 Suppose we want to compute the total fluxes between the internal faces of a cube. We will use the [radiosity method](https://en.wikipedia.org/wiki/Radiosity_(radiometry)#Radiosity_method), that consists in computing the net radiative flux between surfaces. 
 
 The radiosity is the total radiative flux emitted and reflected by a face.
-![Cube faces](/img/scheme_J.png)
+![Radiosity](/img/scheme_J.png)
 
 The system to be solved is hence the following:
-![Cube faces](/img/radiosity.png)
+![Equation system](/img/radiosity.png)
 
 Let us imagine that the cubeh faces are at 10°C, except for the bottom (-10°C). Faces are numbered as follows.
 ![Cube faces](/img/cube.png)
