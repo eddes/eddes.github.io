@@ -1,6 +1,6 @@
 ## Intro
 
-On this page, a few tools and methods gathered over the past years of practice as a pythonist (wish I had known this when it all started!).
+On this page, a few tools and methods gathered over the past years of practice as a pythonist (it would have been useful to know this from start...).
 This page might prove to be useful for people dealing with measured data, equations, modelling or teaching.
 The theory behind the scenes is not tackled: only the practical aspects are shown with minimal working examples.
 
@@ -222,7 +222,7 @@ E=np.dot(Fij,J)
 print("Total radiation [W/m2] ", E)
 ```
 
-The snippet above can be adapted to other configurations, provided that the view factors are known.
+The snippet above can be adapted to other configurations, provided that the view factors are known ([code file](https://github.com/eddes/eddes.github.io/blob/main/radiosity.py)).
 
 ## Sensitivity Analysis
 
