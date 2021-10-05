@@ -222,6 +222,8 @@ E=np.dot(Fij,J)
 print("Total radiation [W/m2] ", E)
 ```
 
+The snippet above can be adapted to other configurations, provided that the view factors are known.
+
 ## Sensitivity Analysis
 
 Some models are complex and require an important number of parameters. It is often useful to know which of the parameters are the most influential on the observed output of the model (e.g. for building simulation: is it the wall insulation level or the properties of windows that affect most the energy consumption?). In the case of optimisation, knowing the influential parameters allows for instance to concentrate the computational effort on the meaningful inputs with regard to the considered output.
