@@ -1,7 +1,7 @@
 ## Intro
 
 On this page, a few tools and methods gathered over the past years of practice as a pythonist (it would have been useful to know this from start...).
-This page might prove to be useful for people dealing with measured data, equations, modelling or teaching.
+This page might prove to be worth reading for people dealing with measured data, equations, modelling or teaching.
 The theory behind the scenes is not tackled: only the practical aspects are shown with minimal working examples.
 
 On the agenda:
