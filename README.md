@@ -175,7 +175,7 @@ The radiosity J is the total radiative flux emitted and reflected by a face:
 The system to be solved depending on the temperatures, emissivities and view factors between faces writes as:
 ![Equation system](/img/radiosity.png)
 
-Let us imagine that the cube faces are at 10°C, while the bottow is maintained at a cool 10°C. Faces are numbered as per the sketch below.
+Let us imagine that the cube faces are at 10°C, while the bottow is maintained at a cool -10°C. Faces are numbered as per the sketch below.
 
  <img src="/img/cube.png" alt="cube" width="200"/>
  
