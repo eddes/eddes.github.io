@@ -1,4 +1,4 @@
-theme: jekyll-theme-minimal
+theme: midnight
 title: 8 essential skills in python for building physics
 description: Applied examples of data interpolation, integration, equation solving, sensitivity analysis, metamodeling and parallel computing.
 logo: /img/metamodel.png
