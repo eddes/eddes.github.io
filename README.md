@@ -83,8 +83,8 @@ import scipy.integrate as integrate # import the integration method
 # scaled for the flux intensity reaching the earth
 def sun_radiation(x,T):
     #a few constants
-    h=6.62*1e-34 #
-    k=1.3805*1e-23 # Planck's constant
+    h=6.62*1e-34 # Planck's constant
+    k=1.3805*1e-23 # Boltzmann's constant
     c=3*1e8 # light velocity
     C1=2*np.pi*h*c**2*1e24 # 1e24 = conversion m^4->µm^4
     C2=h*c/k*1e6 # 1e6 = conversion m->µm
