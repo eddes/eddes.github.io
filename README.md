@@ -80,14 +80,17 @@ We will therefore use [Planck's law](https://en.wikipedia.org/wiki/Planck%27s_la
 import scipy.integrate as integrate # import the integration method
 
 # Planck's emission law depending on wavelength x [micrometers] and temperature T [K]
-def black_body_radiation(x,T):
+# scaled for the flux intensity reaching the earth
+def sun_radiation(x,T):
     #a few constants
-    h=6.62*10**(-34)
-    k=1.3805*10**(-23)
-    c=3*10**8
-    C1= 3.74*10**(8) # um**4
-    C2=1.43*10**4 # umK
-    return C1*x**(-5)/(np.exp(C2/(x*T))-1)*((6.957*10**8)/(149.598*10**9))**2
+    h=6.62*1e-34 #
+    k=1.3805*1e-23 # Planck's constant
+    c=3*1e8 # light velocity
+    C1=2*np.pi*h*c**2*1e24 # 1e24 = conversion m^4->µm^4
+    C2=h*c/k*1e6 # 1e6 = conversion m->µm
+    S_sun=4*np.pi*(6.957*1e8)**2 # surface of sun
+    S_sunEarth=4*np.pi*(149.598*1e9)**2 # surface of the sphere with radius sun->earth
+    return C1*x**(-5)/(np.exp(C2/(x*T))-1)*S_sun/S_sunEarth
 
 k = np.arange(0.05, 50, 0.001) # wavelength range in micrometers
 Tsun=5800 # K
