@@ -151,7 +151,7 @@ def pvs(T):
 # the function that will allow finding Twb depending on temperature T and vapour pressure pv
 def fc_Twb(Twb, T, pv):
     Cp, p, Lv = 1006, 101325, 2400*1e3
-    return - Twb +T+ (pv-pvs(Twb))/(Cp*(p-pvs(Twb)))*0.622*(Lv-2.65*T)
+    return - Twb +T+ (pv-pvs(Twb))/(Cp*(p-pvs(Twb)))*0.622*(Lv-2650*T)
 
 # let's define the temperature and vapour pressure conditions
 Ta = 40 # air dry bulb temperature
