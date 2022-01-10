@@ -253,7 +253,8 @@ problem = {
                [10,90]] # relative humidity
 }
 # generate samples
-N_repetitions=50 
+N_repetitions=50
+num_vars=problem['num_vars']
 # number of function evaluations we are  going to perform:
 print("Evaluations ", N_repetitions*(num_vars+1))
 # prepare evaluations
