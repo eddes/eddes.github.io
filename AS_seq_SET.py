@@ -17,7 +17,9 @@ problem = {
                [10,90]]
 }
 # generate samples
-N_evaluations=50 # combien d'evaluations
+N_repetitions=50 # number of repetitions/trajectorie
+num_vars=problem['num_vars']
+print("Total evaluations ", N_repetitions*(num_vars+1))
 # prepare evaluations
 param_values= sample(problem, N_evaluations, num_levels=4) # num_levels/(2*(num_levels-1))
 Nmax=max(np.shape(param_values)) # values as output
