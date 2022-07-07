@@ -355,7 +355,7 @@ if __name__ == '__main__':
 
 _Note - If the function to be parallelised is not really computationally expensive (as is the case here), you may experience little to no speed-up or even an increase of the execution time. Parallelise wise!_
 
-An alternative using `pool` including a fancy progress bar is proposed hereinafter (note the used of `tqdm` and the function call):
+An alternative using `pool` including a fancy progress bar is proposed hereinafter (note the usage of `tqdm` and the function call):
 
 ```python
 from tqdm import tqdm # package for the progress bar
