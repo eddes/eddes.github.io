@@ -93,9 +93,8 @@ def sun_radiation(x,T):
     S_sunEarth=4*np.pi*(149.598*1e9)**2 # surface of the sphere with radius sun->earth
     return C1*x**(-5)/(np.exp(C2/(x*T))-1)*S_sun/S_sunEarth
 
-k = np.arange(0.05, 50, 0.001) # wavelength range in micrometers
-Tsun=5800 # K
 #now  a little trick using Wien's law: 
+Tsun=5800 # K
 lambda_m=2898/Tsun 
 # ... indeed most of the energy of the black-body spectrum is comprised 
 # between 0.5 and 5 lambda_max, hence no need for a larger integration range
