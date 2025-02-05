@@ -78,6 +78,7 @@ We will therefore use [Planck's law](https://en.wikipedia.org/wiki/Planck%27s_la
 
 ```python
 import scipy.integrate as integrate # import the integration method
+import numpy as np
 
 # Planck's emission law depending on wavelength x [micrometers] and temperature T [K]
 # scaled for the flux intensity reaching the earth
@@ -98,7 +99,7 @@ Tsun=5800 # K
 lambda_m=2898/Tsun 
 # ... indeed most of the energy of the black-body spectrum is comprised 
 # between 0.5 and 5 lambda_max, hence no need for a larger integration range
-E_sun= integrate.quad(lambda x: black_body_radiation(x,Tsun), 0.5*lambda_m, 5*lambda_m)[0]
+E_sun= integrate.quad(lambda x: sun_radiation(x,Tsun), 0.5*lambda_m, 5*lambda_m)[0]
 print("radiation of the black body", E_sun, " [W]")
 ```
 
