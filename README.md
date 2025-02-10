@@ -113,7 +113,7 @@ It is sometimes handy to integrate measured data (e.g. power over time &rarr; en
 Imagine that for some reason, you want to compute the energy comprised in the ASTM solar data of the first example.
 You can either do it directly in the .xls file provided, using the [rectangle integration method](https://en.wikipedia.org/wiki/Numerical_integration#Quadrature_rules_based_on_interpolating_functions), or follow the tutorial presented here.
 	
-You may have noticed that numerical integration requires a function to be integrated (that is: `black_body_radiation()` in the script above).
+You may have noticed that numerical integration requires a function to be integrated (that is: `sun_radiation()` in the script above).
 Very handily, the interpolation function proposed in the previous section provides `fc_interp()` which allows for the determination of the value of the function at any abscissa (_within_ the data, no extrapolation).
 
 ```python
